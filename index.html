@@ -1,20 +1,64 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>injoystickly</title>
-    <script type="text/javascript">
-      function setcolor(color) {
-        document.bgcolor = color;
-        
-      }
-    </script>
-  </head>
-  <body>
-    <h1>이예설</h1>
-    <img src="https://i.imgur.com/2W6LrfF.jpg" height="1000px", width="1200px">
-    <input type="radio" onclick="setColor('skyblue')">하늘색 <br>
-    <input type="radio" onclick="setColor('red')">빨간색 <br>
-    <input type="radio" onclick="setColor('pink')">분홍색 <br>
-    <input type="radio" onclick="setColor('purple')">보라색 <br>
-  </body>
-</html>
+class Square extends React.Component {
+  render() {
+    return (
+      <button className="square">
+        {/* TODO */}
+      </button>
+    );
+  }
+}
+
+class Board extends React.Component {
+  renderSquare(i) {
+    return <Square />;
+  }
+
+  render() {
+    const status = 'Next player: X';
+
+    return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+  }
+}
+
+class Game extends React.Component {
+  render() {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+// ========================================
+
+ReactDOM.render(
+  <Game />,
+  document.getElementById('root')
+);
+
